@@ -9,7 +9,7 @@
     "scripts": {
         "build": "babel src -d dist --copy-files",
         "test": "better-npm-run test",
-        "start": "node --exec babel-node src/app.js"
+        "start": "node babel-node src/app.js"
     },
     "keywords": [],
     "author": "",
