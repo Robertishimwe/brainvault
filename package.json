@@ -9,7 +9,8 @@
     "scripts": {
         "build": "babel src -d dist --copy-files",
         "test": "better-npm-run test",
-        "start": "nodemon --exec babel-node src/app.js"
+        "start": "node --exec babel-node src/app.js",
+        "dev": "nodemon --exec babel-node src/app.js"
     },
     "keywords": [],
     "author": "",
