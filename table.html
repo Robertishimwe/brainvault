@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kudodesha Shoes</td>
+      <td>Sample description for Kudodesha Shoes</td>
+      <td>2023-10-15</td>
+      <td>2023-10-20</td>
+      <td>Pending</td>
+      <td><button onclick="completeTask('taskId1')">Complete</button></td>
+    </tr>
+    <tr>
+      <td>Kubyuka</td>
+      <td>Sample description for Kubyuka</td>
+      <td>2023-10-19</td>
+      <td>2023-10-25</td>
+      <td>Pending</td>
+      <td><button onclick="completeTask('taskId2')">Complete</button></td>
+    </tr>
+    <!-- Add more rows for each task -->
+  </tbody>
+</table>
+
+<script>
+  function completeTask(taskId) {
+    // Implement the logic to mark the task as completed here
+    alert('Task with ID ' + taskId + ' has been completed!');
+  }
+</script>
+
+</body>
+</html>

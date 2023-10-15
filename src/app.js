@@ -16,6 +16,10 @@ app.use((req, res, next) => {
 
 const users_route = require("./routes/userRoute2");
 const topics_route = require("./routes/topicRoute");
+const knowledgebase = require("./routes/pineconeRoutes")
+const task_route = require("./routes/task")
+const dashboard_route = require("./routes/dashboard")
+const scheduleCronJob = require("./services/cronJob/cronJob")
 
 //Database connection
 mongoose
@@ -25,12 +29,15 @@ mongoose
     })
     .catch((error) => {
         console.log("database not connected" + error);
-    });
+    }).finally(scheduleCronJob());
 
 // Route
 app.use(express.json());
 app.use("/api", users_route);
+app.use("/api/task", task_route);
 app.use("/api/topic", topics_route);
+app.use("/api/dashboard", dashboard_route);
+app.use("/api/knowleadge-base", knowledgebase);
 
 //port connection
 const port = process.env.PORT || 3000;

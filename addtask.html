@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management Portal</title>
+    <!-- Add the Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Task Management Portal</h1>
+        <form class="mt-4">
+            <div class="form-group">
+                <input type="text" class="form-control" id="titleInput" placeholder="Task Title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="descriptionInput" placeholder="Task Description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="datetime-local" class="form-control" id="startDateInput">
+            </div>
+            <div class="form-group">
+                <input type="datetime-local" class="form-control" id="endDateInput">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="createTask()">Create Task</button>
+        </form>
+        <div class="mt-4">
+            <!-- <div class="font-weight-bold">Headers:</div>
+            <div class="text-secondary">token: <span id="token">Your Token</span></div> -->
+        </div>
+        <div class="mt-4">
+            <div class="spinner-border text-primary" role="status" id="loader" style="display: none;"></div>
+        </div>
+        <div class="mt-4">
+            <!-- <div class="font-weight-bold">Response:</div>
+            <pre id="response-content" style="display: none;"></pre> -->
+        </div>
+    </div>
+    <!-- Add the Bootstrap JS and Popper.js scripts for Bootstrap functionality -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+        function createTask() {
+            let titleInput = document.getElementById("titleInput");
+            let descriptionInput = document.getElementById("descriptionInput");
+            let startDateInput = document.getElementById("startDateInput");
+            let endDateInput = document.getElementById("endDateInput");
+            let tokenElement = document.getElementById("token");
+            let responseContent = document.getElementById("response-content");
+            let loader = document.getElementById("loader"); // Updated ID here
+    
+            const requestBody = {
+                "title": titleInput.value,
+                "description": descriptionInput.value,
+                "startDate": startDateInput.value,
+                "endDate": endDateInput.value
+            };
+    
+            // Replace with your API URL
+            fetch("http://localhost:3000/api/task/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTJiYjRhMzBmNzU2YTQzMTYzOThkZDAiLCJ1c2VyRW1haWwiOiJyb2JlckBpc2hpbXdlLnJ3IiwiaWF0IjoxNjk3MzYzMTEzfQ.617VVWUYu8Nm6wBDAufS8m3GLkgMV1U1CCxzXICLmSc"
+                },
+                body: JSON.stringify(requestBody)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`API request failed with status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Display the API response
+  alert("Task added")
+            })
+            .catch(error => {
+                console.error("API request failed:", error);
+                loader.style.display = "none"; // Updated ID here
+            });
+        }
+    </script>
+    
+
+
+
+
+</body>
+</html>

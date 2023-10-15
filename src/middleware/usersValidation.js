@@ -21,4 +21,4 @@ const loginValidation = (reqBody) => {
     return joi.validate(reqBody, loginSchema);
 };
 
-module.exports.loginValidation = loginValidation;
+module.exports = {loginValidation, regiserValidation};

@@ -30,7 +30,7 @@ class UserController {
         try {
             const { error } = loginValidation(req.body);
             // console.log(req.body.userPassword, user.userPassword);
-            if (error) return res.status(400).send(error.details[0].message);
+            if (error) return res.status(400).send(error);
             const user = await User.findOne({ userEmail: req.body.userEmail });
             if (!user) return res.status(400).send({ message: "User does not exist" });
             const validPass = await bcrypt.compare(req.body.userPassword, user.userPassword);
@@ -38,7 +38,7 @@ class UserController {
             const token = jwt.sign({ _id: user._id, userEmail: user.userEmail }, process.env.TOKEN_SECRET);
             res.header("token", token).send({ message: token });
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).send(">>>>>>>.",error);
         }
     }
     static async findAllUsers(req, res) {
