@@ -7,7 +7,6 @@
         "babel-core": "7.0.0-bridge.0"
     },
     "scripts": {
-        "build": "babel src -d lib",
         "start": "babel-node src/app.js",
         "dev": "nodemon --exec babel-node src/app.js"
     },
