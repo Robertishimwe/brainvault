@@ -51,10 +51,28 @@ class TaskController {
     }
   };
 
+
+
+  static markTaskAsCompleted = async (req, res) => {
+    try {
+      // Find the task by ID and set its status to "completed."
+      const taskId = req.params.taskId
+      const updateData = { status: "completed" };
+      const updatedTask = await updateTask(taskId, updateData);
+
+      return res.status(200).json(updatedTask);
+
+    } catch (error) {
+      res.status(500).json({error: "Failed to mark task as completed: " + error.message});
+    }
+  };
+
+
   static getTasksForUserHandler = async (req, res) => {
     try {
       const tasks = await getTasksForUser(req.params.userId);
-      res.json(tasks);
+      const completedTasks = tasks.filter(task => task.status !== 'completed');
+      res.json(completedTasks);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

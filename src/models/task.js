@@ -107,6 +107,9 @@ const taskSchema = new Schema({
     enum: ['pending', 'started', 'completed', 'overdued'],
     default: 'pending'
   },
+  breached:{
+    type: Boolean,
+  },
   createDate: {
     type: Date,
     default: Date.now(),

@@ -4,6 +4,9 @@ import verify from "../../middleware/authenticator";
 const router = express.Router();
 
 router.post("/create",verify, TaskController.createTaskHandler);
+router.get("/get/all/foruser/:userId", TaskController.getTasksForUserHandler);
+router.patch("/complete/:taskId", TaskController.markTaskAsCompleted);
+
 // router.get("/all", verify, topicController.allTopics);
 // router.get("/:id", verify, topicController.findTopic);
 // router.get("/name/:name", verify, topicController.findTopicByName);

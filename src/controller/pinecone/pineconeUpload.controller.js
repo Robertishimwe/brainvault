@@ -8,7 +8,7 @@ const { uploadToPinecone } = require('../../services/pineconeServices/pinecone.s
 
 const publicDirectory = path.join(__dirname, '..', 'files');
 
-const pdfPath = `${publicDirectory}/ALM_Octane_Installation_Guide_for_Windows.pdf`;
+const pdfPath = `${publicDirectory}/Install_Windows.pdf`;
 
 let newDataToUpload;
 
