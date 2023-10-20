@@ -472,7 +472,7 @@ const DashboardService = {
       // Calculate upcoming start tasks for today, tomorrow, and this week
       const upcomingStartTasksToday = await Task.find({
         startDate: { $gte: currentDate, $lt: tomorrow },
-        status: 'pending',
+        status: { $in: ['pending', 'started', 'overdued'] }
       });
 
       const upcomingStartTasksTomorrow = await Task.find({

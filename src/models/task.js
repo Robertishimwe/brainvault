@@ -128,11 +128,11 @@ taskSchema.post(['updateOne', 'updateMany'], async function (result) {
       // Send an email to the user
       const email = await emailService(
         userEmail,
-        'Your task has been updated',
+        `Your task#${updatedTask.title} - ${updatedTask.title} has been updated`,
         `Hi ${user.userName},
 
           Your task "${updatedTask.title}" has been updated.
-
+          New status: <b>${updatedTask.status}</b>
           Please click on the following link to view the updated task:
 
           [Link to task]
