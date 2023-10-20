@@ -536,10 +536,7 @@ const DashboardService = {
       const breachedTasks = await Task.find({ breached: true });
     
     
-      const overdueTasks = await Task.find({
-        endDate: { $lt: currentDate },
-        status: { $ne: 'completed' },
-      });
+      const overdueTasks = await Task.find({ status: "overdued" });
 
       return {
         counts,
